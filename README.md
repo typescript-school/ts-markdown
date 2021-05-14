@@ -67,7 +67,7 @@ console.log("Hello from index.ts");
 
 
 
-**Create scirpt to compile and run `index.ts`**
+**Create script to compile and run `index.ts`**
 
 ```yaml
   "scripts": {
@@ -84,6 +84,16 @@ yarn start
 ```
 
 
+
+**Use `ts-node` to run without compiling**
+
+```diff
+	"scripts": {
+    "compile": "tsc ",
+    "start": "node dist/index.js",
++   "dev": "ts-node src/index.ts"
+  },
+```
 
 
 
