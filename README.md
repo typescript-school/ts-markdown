@@ -128,11 +128,12 @@ ts-cli-app
 
 **Publish to npm** 
 
-```
+```bash
+# Publish to npm org.
 yarn publish
 
+# Test with a fresh install in a docker image
 docker run node:14 npx ts-cli-app 
-
 ```
 
 
