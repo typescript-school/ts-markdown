@@ -124,6 +124,19 @@ ts-cli-app
 
 
 
+
+
+**Publish to npm** 
+
+```
+yarn publish
+
+docker run node:14 npx ts-cli-app 
+
+```
+
+
+
 Refer: 
 
 - https://walrus.ai/blog/2019/11/typescript-cli/
