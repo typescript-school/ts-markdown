@@ -3,10 +3,10 @@
 
 
 - [x] Create a typescrpt project
-- [ ] Onelines on  each library used
-- [ ] Install as cli app
-- [ ] publish to npm
-- [ ] test in a docker image
+- [x] Onelines on  each library used
+- [x] Install as cli app
+- [x] publish to npm
+- [x] test in a docker image
 - [ ] source map and debugging ?
 
 
