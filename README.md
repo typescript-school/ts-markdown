@@ -67,7 +67,7 @@ console.log("Hello from index.ts");
 
 
 
-**Create script to compile and run `index.ts`**
+**Create script to compile and run `index.ts`** in `package.json`
 
 ```yaml
   "scripts": {
@@ -85,7 +85,7 @@ yarn start
 
 
 
-**Use `ts-node` to run without compiling**
+**Use `ts-node` to run without compiling** in `package.json`
 
 ```diff
 	"scripts": {
@@ -93,6 +93,33 @@ yarn start
     "start": "node dist/index.js",
 +   "dev": "ts-node src/index.ts"
   },
+```
+
+
+
+**Create a bin (binary) to run for our program in `package.json`**
+
+```yaml
+  "bin": {
+    "ts-cli-app": "dist/index.js"
+  },
+```
+
+In `index.ts`, add directive to instruct shell on how to run this file : 
+
+```
+#!/usr/bin/env node
+```
+
+
+
+**Test by installing it on local machine** 
+
+```bash
+yarn link
+ts-cli-app
+# output : 
+# Hello from index.ts
 ```
 
 
