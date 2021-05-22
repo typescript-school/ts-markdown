@@ -38,7 +38,12 @@ is rendered as :
 
 
 
-
+| column one | column two | three   | four   |
+| ---------- | ---------- | ------- | ------ |
+| one-1      | two-1      |         |        |
+| one-2      | two-2      |         |        |
+| one-3      |            | three-3 |        |
+|            |            | three-4 | four-4 |
 
 
 

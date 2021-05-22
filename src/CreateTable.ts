@@ -1,24 +1,17 @@
-
-const table = [
-    {
-        'column-one': 'row-1-col-1',
-        'column-two': 'row-1-col-2',
-    },
-    {
-        'column-one': 'row-2-col-1',
-        'column-two': 'row-2-col-2',
-    }
-];
-
-const createTableStructure = (data : Array<any>) => {
+const createTableStructure = (data : Array<any>, options?: {[id: string]: any}) => {
   const headers : Array<string> = [];
   const rows = [];
 
+    const getColumnName = (fieldName: string) => {
+        return options?.headers && options?.headers[fieldName] ? options.headers[fieldName] : fieldName;
+    };
+
     //Prepare headers
     data.forEach(data => {
-        Object.keys(data).forEach(colName => {
-            if(!headers.includes(colName)){
-                headers.push(colName)
+        Object.keys(data).forEach(fieldname => {
+            const columnName = getColumnName(fieldname);
+            if(!headers.includes(columnName)){
+                headers.push(columnName)
             }
         })
     });
@@ -26,9 +19,10 @@ const createTableStructure = (data : Array<any>) => {
     // Prepare rows
     for(let row of data){
         const rowValues = new Array(headers.length).fill(' ');
-        for(let column of Object.keys(row)){
-            const columnIndex = headers.indexOf(column);
-            rowValues[columnIndex] = row[column];
+        for(let fieldName of Object.keys(row)){
+            const columnName = getColumnName(fieldName);
+            const columnIndex = headers.indexOf(columnName);
+            rowValues[columnIndex] = row[fieldName];
         }
         rows.push(rowValues);
     }
@@ -37,8 +31,8 @@ const createTableStructure = (data : Array<any>) => {
 
 const toMarkupRow = (values : Array<string>) => `|${values.join('|')}|\n`
 
-const toTable = (data : Array<any>) => {
-    const tableData = createTableStructure(data);
+const toTable = (data : Array<any>, options?: {[id: string]: any}) => {
+    const tableData = createTableStructure(data, options);
     let markup = '';
     markup += toMarkupRow(tableData.headers);
     markup += toMarkupRow(tableData.headers.map(a => '-'));
